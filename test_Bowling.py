@@ -39,3 +39,22 @@ def test_game_with_spare(game):
     roll_many(game,16,0)
 
     assert game.score == 20
+
+def test_game_with_single_strike(game):
+    game.takedown(10)
+    game.takedown(0)
+    roll_many(game,12,0)
+
+    assert game.score == 10
+
+def test_game_with_strike(game):
+    game.takedown(0)
+    game.takedown(0)
+    game.takedown(10)
+    game.takedown(3)
+    game.takedown(4)
+    game.takedown(6)
+    game.takedown(0)
+    roll_many(game,12,0)
+
+    assert game.score == 30    
